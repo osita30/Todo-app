@@ -1,24 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import React,{useState} from 'react';
+import TodoForm from './TodoForm';
+import TodoList from "./TodoList";
+import "tachyons"
+const App = () =>{
+  const [todos, setTodos] = useState([]);
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  const addTodo = (todo) =>{
+    setTodos([todo,...todos]);
+  }
+  return ( 
+    <div className='tc' pa3 b--green bg-light-blue>
+      <h1> Todo App</h1>
+      <TodoForm addTodo = {addTodo} />
+      <TodoList  todos ={todos}/>
     </div>
+    
   );
 }
 
